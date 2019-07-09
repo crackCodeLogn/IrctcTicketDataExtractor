@@ -25,7 +25,7 @@ public class Helper {
 
     private final static SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MMM-yyyy");
     private final static SimpleDateFormat sdf2 = new SimpleDateFormat("yyyyMMdd");
-    private final static SimpleDateFormat sdf3 = new SimpleDateFormat("dd-MM-yyyy_hhmmss");
+    private final static SimpleDateFormat sdf3 = new SimpleDateFormat("dd-MM-yyyy_HHmmss");
 
     public static Properties getPropertiesForProject() {
         final Properties properties = new Properties();
