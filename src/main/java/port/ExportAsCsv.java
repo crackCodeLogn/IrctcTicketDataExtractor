@@ -8,7 +8,6 @@ import util.Helper;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.util.List;
 
 /**
@@ -36,7 +35,7 @@ public class ExportAsCsv {
         try (FileWriter fileWriter = new FileWriter(destination)) {
             fileWriter.write(Helper.getColumnHeaderForExpensesCsv());
             fileWriter.write(csv.toString());
-            logger.error("Export to CSV complete! File location : '{}'", destination.getAbsolutePath());
+            logger.info("Export to CSV complete! File location : '{}'", destination.getAbsolutePath());
         } catch (IOException e) {
             logger.error("Error while writing to the export csv file '{}' : ", destination.getAbsolutePath(), e);
         }
