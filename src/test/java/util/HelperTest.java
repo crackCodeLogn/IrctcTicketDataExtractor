@@ -28,6 +28,6 @@ public class HelperTest {
 
     @Test
     public void testGetColumnHeaderForExpensesCsv() {
-        Assert.assertEquals("displayDate,computableDate,sourceStation,boardingStation,destinationStation,fare\n", Helper.getColumnHeaderForExpensesCsv());
+        Assert.assertEquals("displayDate,computableDate,pnr,trainNumber,trainName,sourceStation,boardingStation,destinationStation,fare\n", Helper.getColumnHeaderForExpensesCsv());
     }
 }
