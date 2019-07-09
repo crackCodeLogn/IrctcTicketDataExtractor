@@ -20,6 +20,9 @@ public class DetailsRefiner {
 
     public static Expense refineDetailsFromTheExtract(List<String> lines) {
         final AtomicInteger lineNumber = new AtomicInteger(1);
+        long pnr = DEFAULT_PNR;
+        String trainName = DEFAULT_TRAIN_NAME;
+        int trainNumber = DEFAULT_TRAIN_NUMBER;
         String dateOfJourney = DEFAULT_DATE_OF_JOURNEY;
         String from = DEFAULT_SRC_STATION;
         String to = DEFAULT_DESTINATION_STATION;
@@ -28,7 +31,13 @@ public class DetailsRefiner {
 
         for (String line : lines) {
             logger.debug("{}. {}", lineNumber.getAndIncrement(), line);
-            if (line.contains(DOJ)) { //DOJ, FROM, TO
+            if (line.contains(PNR_NO)) {
+                pnr = Long.valueOf(enrichRawString(line.substring(line.indexOf(PNR_NO), line.indexOf(TRAIN_NUM_NAME))));
+                final String[] trainNumName = enrichRawString(line.substring(line.indexOf(TRAIN_NUM_NAME), line.indexOf(QUOTA))).split("/");
+                trainNumber = Integer.valueOf(enrichRawString(trainNumName[0]));
+                trainName = enrichRawString(trainNumName[1]);
+
+            } else if (line.contains(DOJ)) { //DOJ, FROM, TO
                 from = enrichRawString(line.substring(line.indexOf(FROM), line.indexOf(DOJ)).trim());
                 dateOfJourney = enrichRawString(line.substring(line.indexOf(DOJ), line.indexOf(TO)));
                 to = enrichRawString(line.substring(line.indexOf(TO)));
@@ -48,7 +57,7 @@ public class DetailsRefiner {
                 break; //avoiding unnecessary further processing
             }
         }
-        return new Expense(dateOfJourney, from, boardingAt, to, ticketFare);
+        return new Expense(dateOfJourney, pnr, trainNumber, trainName, from, boardingAt, to, ticketFare);
     }
 
     static String enrichRawString(String data) {

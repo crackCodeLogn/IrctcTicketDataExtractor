@@ -21,6 +21,9 @@ public class Constants {
     //FOR DEFAULTS FOR EXPENSE CLASS
     public static final String DEFAULT_DATE_OF_JOURNEY = "01-Jan-4567"; //dd-MM-yyyy
     public static final long DEFAULT_COMPUTABLE_DOJ = 45670101L; //yyyyMMdd
+    public static final long DEFAULT_PNR = 1234567890L;
+    public static final int DEFAULT_TRAIN_NUMBER = -1;
+    public static final String DEFAULT_TRAIN_NAME = "TRAIN EXP";
     public static final String DEFAULT_SRC_STATION = "SOMEWHERE";
     public static final String DEFAULT_BOARDING_STATION = "SOMEWHERE_BOARDING";
     public static final String DEFAULT_DESTINATION_STATION = "DESTINATION";
@@ -35,6 +38,9 @@ public class Constants {
     //public static final String TICKET_FARE = "Ticket Fare **";
     public static final String TICKET_FARE = "Total Fare (all inclusive)";
     public static final String RUPEES = "Rupees";
+    public static final String PNR_NO = "PNR No:";
+    public static final String TRAIN_NUM_NAME = "Train No. & Name:";
+    public static final String QUOTA = "Quota:";
 
     public static final String PDF = ".pdf";
 }
